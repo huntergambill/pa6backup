@@ -35,16 +35,14 @@ public class UpdateFile {
             Update obj = new Update ();
             String line = scanner2.nextLine();
             String[] category = line.split("#");
-            while(category[0]==("H")){
+            //this was while at one point
+            if (category[0]==("H")){
             obj.setFileName(category[1]);
-            obj.setFileDate(Integer.parseInt(category[2]));
+            obj.setHeaderDate(Integer.parseInt(category[2]));
             }
-            while(category[0]==("D")) {
-                while(category[1]=="A") {
-                    updateCounter++;
-                    newMasterCounter++;
 
-/*
+           else if (category[0]==("D")) {
+                if(category[1]=="A") {
                     obj.setBoxID(Integer.parseInt(category[2]));
                     obj.setMovieID(Integer.parseInt(category[3]));
                     obj.setMovieGenre(category[4]);
@@ -52,37 +50,46 @@ public class UpdateFile {
                     obj.setInStock(Boolean.parseBoolean(category[6]));
                     obj.setTotalRentals(Integer.parseInt(category[7]));
                     obj.setRentals30(Integer.parseInt(category[8]));
-*//
+                    updateCounter++;
+                    newMasterCounter++;
                 }
-                while(category[1]=="C") {
+                else if(category[1]=="C") {
+                    obj.setBoxID(Integer.parseInt(category[2]));
+                    obj.setMovieID(Integer.parseInt(category[3]));
+                    obj.setMovieGenre(category[4]);
+                    obj.setReleaseYear(Integer.parseInt(category[5]));
+                    obj.setInStock(Boolean.parseBoolean(category[6]));
+                    obj.setTotalRentals(Integer.parseInt(category[7]));
+                    obj.setRentals30(Integer.parseInt(category[8]));
                     updateCounter++;
                     masterCounter++;
                     newMasterCounter++;
 
 
                 }
-                while(category[1]=="D") {
-                    updateCounter++;
+                else if(category[1]=="D") {
+                    obj.setBoxID(Integer.parseInt(category[2]));
+                    obj.setMovieID(Integer.parseInt(category[3]));
+                    obj.setMovieGenre(category[4]);
+                    obj.setReleaseYear(Integer.parseInt(category[5]));
+                    obj.setInStock(Boolean.parseBoolean(category[6]));
+                    obj.setTotalRentals(Integer.parseInt(category[7]));
+                    obj.setRentals30(Integer.parseInt(category[8]));
                     masterCounter++;
+                    updateCounter++;
 
                 }
 
-            while(category[0]=="T") {
+            else if(category[0]=="T") {
                 obj.setFileName(category[1]);
-                obj.setFileDate(Integer.parseInt(category[2]));
+                obj.setHeaderDate(Integer.parseInt(category[2]));
                 obj.setNumberofrecords(Integer.parseInt(category[3]));
                 obj.setTotalRentals(Integer.parseInt(category[4]));
 
             }
-            obj.setActionCode(category[1]);
-            obj.setBoxID(Integer.parseInt(category[2]));
-            obj.setMovieID(Integer.parseInt(category[3]));
-            obj.setMovieGenre(category[4]);
-            obj.(category);
 
 
-            }
-            obj.setBoxID(Integer.parseInt(category[0]));
+           /* obj.setBoxID(Integer.parseInt(category[0]));
             obj.setMovieID(Integer.parseInt(category[1]));
             obj.setMovieTitle((category[2]));
             obj.setMovieGenre((category[3]));
@@ -91,34 +98,14 @@ public class UpdateFile {
             obj.setTotalRentals(Integer.parseInt(category[6]));
             obj.setRentals30(Integer.parseInt(category[7]));
             updateMovies.add(obj);
-        }
-        //read in master file
-        File masterFile = new File("master.txt");
-        Scanner scanner = new Scanner(masterFile);
-        //create ArrayList of movies from master file
-        ArrayList<Master> masterMovies = new ArrayList<Master>();
-        //read through each line,splitting and setting each field
-        while (scanner.hasNextLine()) {
-            Master obj = new Master ();
-            String line2 = scanner.nextLine();
-            String[] category = line2.split("#");
-            obj.setBoxID(Integer.parseInt(category[0]));
-            obj.setMovieID(Integer.parseInt(category[1]));
-            obj.setMovieTitle((category[2]));
-            obj.setMovieGenre((category[3]));
-            obj.setReleaseYear(Integer.parseInt(category[4]));
-            obj.setInStock(Boolean.parseBoolean(category[5]));
-            obj.setTotalRentals(Integer.parseInt(category[6]));
-            obj.setRentals30(Integer.parseInt(category[7]));
-            masterMovies.add(obj);
+        */}
 
-
-        }
         //sort and .compare
-        Collections.sort(masterMovies);
+
         Collections.sort(updateMovies);
 
-        while (notatBottom(updateCounter, masterCounter)) {
+
+       /* while (notatBottom(updateCounter, masterCounter)) {
         if (updateArray[updateCounter].getMovieID() < masterArray[masterCounter].getMovieID()) {
         newMasterArray[newMasterCounter] = updateArray[updateCounter];
         updateCounter++;
@@ -138,6 +125,8 @@ public class UpdateFile {
         } else // delete
         updateCounter++;
         masterCounter++;
+        */
+
         PrintWriter outputFile = new PrintWriter("master.txt");
         //for (){
         outputFile.println();
@@ -145,31 +134,5 @@ public class UpdateFile {
     }
     }}
 
-    private static boolean notatBottom(int updateCounter, int masterCounter) {
-        if (updateCounter = 0) return true;
-        else {
-            return false;}
- /*/while (notatBottom(updateCounter, masterCounter)) {
-                    //if (updateArray[updateCounter].getlastName() < masterArray[masterCounter].getlastName()) {
-                    newMasterArray[newMasterCounter] = updateArray[updateCounter];
-                    updateCounter++;
-                    newMasterCounter++;
-                    //}
-                    //if (updateArray[updateCounter].getlastName() > masterArray[masterCounter].getlastName()) {
-                    newMasterArray[newMasterCounter] = masterArray[masterCounter];
-                    masterCounter++;
-                    newMasterCounter++;
-                    //}
+//private static boolean notatBottom(int updateCounter, int masterCounter) {
 
-                    //if (C = updateArray[updateCounter].getActionCode()) {
-                    //newMasterArray[newMasterCounter] = updateArray[updateCounter];
-                    //updateCounter++;
-                    //newMasterCounter++;
-                    //masterCounter++;
-                    //} else // delete
-                    updateCounter++;
-                    masterCounter++;
-
-    }
-
-}

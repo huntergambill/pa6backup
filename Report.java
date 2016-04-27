@@ -1,9 +1,9 @@
 
 public class Report {
     public static void main(String[] args, Object updateMovies){
-        report1(updateMovies);
-        
+        UpdateFile updateFile = new UpdateFile();
 
+        report1(updateMovies);
 
         System.out.println("");
         report2();

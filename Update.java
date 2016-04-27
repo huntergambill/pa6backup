@@ -10,9 +10,20 @@ public class Update implements Comparable<Update> {
     int totalRentals;
     int rentals30;
     String fileName;
-    int fileDate;
+    int headerDate;
+    int trailerDate;
     int numberofrecords;
     int sumrentals;
+    boolean inStock;
+    public int getTrailerDate() {
+        return trailerDate;
+    }
+
+    public void setTrailerDate(int trailerDate) {
+        this.trailerDate = trailerDate;
+    }
+
+
     public int getSumrentals() {
         return sumrentals;
     }
@@ -30,12 +41,12 @@ public class Update implements Comparable<Update> {
     }
 
 
-    public int getFileDate() {
-        return fileDate;
+    public int getHeaderDate() {
+        return headerDate;
     }
 
-    public void setFileDate(int fileDate) {
-        this.fileDate = fileDate;
+    public void setHeaderDate(int headerDate) {
+        this.headerDate = headerDate;
     }
 
 
@@ -74,7 +85,7 @@ public class Update implements Comparable<Update> {
         this.inStock = inStock;
     }
 
-    boolean inStock;
+
 
     public int getReleaseYear() {
         return releaseYear;
